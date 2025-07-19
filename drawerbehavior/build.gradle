@@ -41,32 +41,24 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'com.google.android.material:material:1.12.0'
-//    implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.core:core-ktx:1.16.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-//    implementation 'com.github.rjsvieira:morphos:1.0.0'
-
-
 }
-/*
-publish {
-    def groupProjectID = 'com.infideap.drawerbehavior'
-    def artifactProjectID = 'drawer-behavior'
-    def publishVersionID = '1.0.4'
 
-    userOrg = 'infideap2'
-    repoName = "Drawer-Behavior"
-    uploadName = "Drawer-Behavior"
-    groupId = groupProjectID
-    artifactId = artifactProjectID
-    publishVersion = publishVersionID
-    desc = ''
-    website = 'https://github.com/shiburagi/Drawer-Behavior'
-}*/
-repositories {
-    mavenCentral()
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.Ram-Kuma-wat'
+                artifactId = 'drawerbehavior'
+                version = '1.0.5'
+            }
+        }
+    }
 }
